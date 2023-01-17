@@ -1,0 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;600;700&display=swap");
+
+
+@font-face {
+  font-family: "Rooster";
+  src: url("../src/fonts/RoosterPersonalUse-3z8d8.ttf");
+  font-display: fallback;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* background-color: rgb(239, 239, 38); */
+    background-color: #f5f5dc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }

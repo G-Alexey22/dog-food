@@ -1,0 +1,85 @@
+main {
+  margin-top: 20px;
+  background-color: white;
+  height: 80vh;
+  width: 90vw;
+  max-width: 1100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-picture {
+  /* background-color: blueviolet; */
+  height: 100%;
+  width: 70%;
+}
+.main-picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.main-title {
+  background-color: white;
+  height: 100%;
+  width: 30%;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.main-title__button {
+  margin-top: 30px;
+  background-color: lime;
+  height: 50px;
+  width: 200px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  color: black;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s linear;
+}
+
+.main-title__button:hover {
+  transform: scale(1.02);
+}
+
+@media (max-width: 1024px) {
+  main {
+    flex-direction: column;
+  }
+  .main-picture {
+    width: 100%;
+  }
+  .main-title {
+    font-size: 25px;
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 720px) {
+  main {
+    flex-direction: column;
+  }
+  .main-picture {
+    width: 100%;
+  }
+  .main-title {
+    font-size: 25px;
+    width: 100%;
+  }
+  .main-title__button {
+    margin-bottom: 20px;
+  }
+}

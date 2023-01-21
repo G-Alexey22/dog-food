@@ -3,22 +3,19 @@ import "./Card.css";
 import heart from "../../icons/heart.svg";
 import heardRed from "../../icons/heart-red.svg";
 
-export function Card({ id, title, price, image, favorite, discount, wight, changeStatusFavorite}) {
+export function Card({ id, title, price, image, favorite, discount, wight}) {
   // console.log(id, title, price, image);
 
   const newPrice = Math.round(price - (price * discount) / 100);
 
-  //Функция зменения статуса Избранное
-  function getID(event) { 
-    changeStatusFavorite(event.target.closest('.card').getAttribute('id'))
-  }
+  
  
   return (
       <div className="card" id={id}>
         <img className="card__img" src={image} alt="card_image" />
         <div className="card-like">
           <img src={favorite ? `${heardRed}` : `${heart}`} alt="icon-heart" 
-          onClick={getID} //Изменение статуса Избранное
+         
           /> 
         </div>
         {discount > 0 && <div className="card-sale">-{discount}%</div>}

@@ -53,7 +53,7 @@ function Header() {
         <div>
           <Link to="/signin" className="header-box">
             <img className="header-box__img" src={person} alt="icon-person" />
-            Войти
+            Авторизация
           </Link>
         </div>
       </div>

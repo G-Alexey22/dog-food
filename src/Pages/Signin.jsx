@@ -1,12 +1,9 @@
-import {SigninForm} from "../Components/SigninForm/SigninForm"
-import {FooterMemo} from "../Components/Footer/Footer"
+import { SigninForm } from "../Components/SigninForm/SigninForm";
 
 export function Signin() {
-    return (
-        <>
-        <SigninForm />
-        <FooterMemo />
-        </>
-    );
+  return (
+    <>
+      <SigninForm />
+    </>
+  );
 }
-

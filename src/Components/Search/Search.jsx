@@ -9,8 +9,7 @@ import { useOutletContext } from "react-router-dom";
 function Search() {
   // console.log('Search');
 
-  const [setSearchQuery] = useOutletContext();
-
+  const setSearchQuery = useOutletContext()[2]
   const [valueFromInput, setValueFromInput] = useState(""); //Состояние строки ввода
 
   //Функция очиски Input

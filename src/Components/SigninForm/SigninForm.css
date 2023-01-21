@@ -50,6 +50,13 @@
     border: 1px solid #d9d9d9;
     transition: all 0.2s;
   }
+  .signin-form__message{
+    margin: 10px 10px 10px 10px;
+    color: green;
+    text-align: left;
+    font-family: "Hanken Grotesk", sans-serif;
+    font-size: 15px;
+  }
   .signin-form__button {
     height: 40px;
     margin: 20px 0px 10px 0px;

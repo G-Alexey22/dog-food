@@ -59,7 +59,13 @@
   font-size: 22px;
   transition: all 0.2s linear;
 }
-
+.signup-form__message{
+  margin: 10px 10px 10px 10px;
+  color: green;
+  text-align: left;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 15px;
+}
 .signup-form__button:hover{
   transform: scale(1.02);
 }

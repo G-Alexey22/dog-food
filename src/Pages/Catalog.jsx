@@ -1,16 +1,11 @@
-
 import { SearchMemo } from "../Components/Search/Search";
-import{ListCard} from "../Components/ListCard/ListCard"
-import {FooterMemo} from "../Components/Footer/Footer"
+import { ListCard } from "../Components/ListCard/ListCard";
 
-export function Catalog(props) {
- 
+export function Catalog() {
   return (
     <>
-    
       <SearchMemo />
-      <ListCard/>
-      <FooterMemo />
+      <ListCard />
     </>
   );
 }

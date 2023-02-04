@@ -39,14 +39,10 @@
   outline: none;
 }
 
-
 .search-container__find {
-  background-color: transparent;
   position: absolute;
   right: 5px;
-  bottom: 6px;
-  border: none;
-  cursor: pointer;
+  bottom: 10px;
 }
 .active {
   display: block;

@@ -1,6 +1,5 @@
-
+import { BasketTable } from "../Components/BasketTable/BasketTable";
 
 export function Basket() {
-    return ( <h1>Здесь будет раздел конзины</h1> );
+  return <BasketTable />;
 }
-

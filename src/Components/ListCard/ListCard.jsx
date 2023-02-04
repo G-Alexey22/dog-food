@@ -1,26 +1,21 @@
-import { useOutletContext } from "react-router-dom";
-import { Card } from "../Card/Card";
-import { Loader } from "../Loader/Loader";
 import "./ListCard.css";
-import { Link } from "react-router-dom";
+import { Loader } from "../Loader/Loader";
+import { Card } from "../Card/Card";
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { getTokenSelector } from "../../redux/slices/userSlice";
+import { getSearchFromImput } from "../../redux/slices/filterSlice";
 
-export function ListCard() {
-  const [cardsProduct, setCardsProduct] = useState(); //Каталог товаров
-  const token = useOutletContext()[1];
-  const searchQuery = useOutletContext()[3];
+export const ListCard = () => {
+  const token = useSelector(getTokenSelector);
+  const search = useSelector(getSearchFromImput);
 
-  // Получение продуктов и поиск, если Токен есть
-  let find = "";
-  if (searchQuery !== "") {
-    find = "/search?query=" + searchQuery;
-  } else find = "";
-
-  const result = useQuery({
-    queryKey: ["products", searchQuery],
-    queryFn: () => {
-      fetch("https://api.react-learning.ru/products" + find, {
+  const { data, isLoading } = useQuery({
+    enabled: token !== "",
+    queryKey: ["products", search],
+    queryFn: () =>
+      fetch("https://api.react-learning.ru/products/search?query=" + search, {
         headers: {
           "content-type": "application/json",
           authorization: token,
@@ -28,21 +23,11 @@ export function ListCard() {
       })
         .then((response) => response.json())
         .then((response) => {
-          // console.log(response);
-          setCardsProduct(() => {
-            if (searchQuery === "") {
-              return response.products;
-            }
-            return response;
-          });
-        })
-      return result;
-    },
-    enabled: token !== "",
+          return response;
+        }),
   });
 
-  //Отображается если нет авторизации
-  if (!cardsProduct)
+  if (token === "")
     return (
       <div className="listcard-error">
         <div className="listcard-error__title">
@@ -58,7 +43,7 @@ export function ListCard() {
       </div>
     );
 
-  if (result.isLoading) {
+  if (isLoading) {
     return (
       <div className="loader-container">
         <Loader />
@@ -67,21 +52,21 @@ export function ListCard() {
   }
 
   return (
-   
     <div className="listcard">
-      {searchQuery !== "" && cardsProduct.length === 0 && (
+      {search !== "" && data.length === 0 && (
         <div className="query-result">
-          По запросу «{searchQuery}» товаров не найдено
+          По запросу «{search}» товаров не найдено
         </div>
       )}
-      {searchQuery !== "" && cardsProduct.length > 0 && (
+
+      {search !== "" && data.length > 0 && (
         <div className="query-result">
-          Результаты поиска товара по запросу «{searchQuery}»
+          Результаты поиска товара по запросу «{search}»
         </div>
       )}
 
       <div className="card-container">
-        {cardsProduct.map((item) => (
+        {data.map((item) => (
           <Card
             key={item._id}
             id={item._id}
@@ -91,10 +76,10 @@ export function ListCard() {
             favorite={false}
             discount={item.discount}
             wight={item.wight}
+            tags={item.tags}
           />
         ))}
       </div>
     </div>
-  
   );
-}
+};

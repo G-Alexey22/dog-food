@@ -3,17 +3,10 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useMutation } from "@tanstack/react-query";
 
 import { SignupFormValidation } from "./SignupFormValidation";
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState} from "react";
 
 export function SignupForm() {
-  const navigate = useNavigate()
-  const [counter, setCounter] = useState(); //Статус таймера
   const [statusResponse, setStatusResponse] = useState(""); //Статус ответа
-
-  useEffect(() => {
-    counter > 0 && setTimeout(() => setCounter(counter - 1), 1000);
-  }, [counter]);
 
   const { mutateAsync } = useMutation({
     mutationFn: (values) =>
@@ -25,15 +18,15 @@ export function SignupForm() {
         body: JSON.stringify(values),
       }).then((response) => {
         if (response.status === 409) {
-          setStatusResponse(409);
+          setStatusResponse("Пользователь с данным email уже существует.");
         }
         if (response.status === 400) {
-          setStatusResponse(400);
+          setStatusResponse("Некорректно заполнено одно из полей.");
         }
         if (response.status === 201) {
-          setStatusResponse(201);
-          setCounter(15);
-          setTimeout(()=>{navigate('/signin')},15000 )
+          setStatusResponse(
+            "Новый пользователь успешно создан. Для входа на сайт перейдите на страницу авторизации."
+          );
         }
       }),
   });
@@ -42,7 +35,7 @@ export function SignupForm() {
   function SubmitSignupForm(values) {
     mutateAsync(values);
     // console.log(values)
-     }
+  }
 
   return (
     <>
@@ -90,22 +83,8 @@ export function SignupForm() {
               type="password"
             />
             <ErrorMessage name="password" />
-            {statusResponse === 409 && (
-              <div className="signup-form__message">
-                Пользователь с данным email уже существует.
-              </div>
-            )}
-            {statusResponse === 400 && (
-              <div className="signup-form__message">
-                Некорректно заполнено одно из полей.
-              </div>
-            )}
-            {statusResponse === 201 && (
-              <div className="signup-form__message">
-                Новый пользователь успешно создан. Вы будете
-                перенаправлены на страницу авторизации через {counter} сек.
-              </div>
-            )}
+
+            <div className="signup-form__message">{statusResponse}</div>
 
             <button className="signup-form__button" type="submit">
               Регистрация

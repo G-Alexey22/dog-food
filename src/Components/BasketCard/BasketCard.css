@@ -1,0 +1,148 @@
+.line {
+    /* background-color: darkcyan; */
+    background-color: white;
+    height: 120px;
+    width: 100%;
+    display: flex;
+    border-radius: 5px;
+    border: 1px solid grey;
+    margin-bottom: 10px;
+  }
+ 
+  .line-checkbox,
+  .line-foto,
+  .line-title,
+  .line-number,
+  .line-price {
+    /* background-color: aqua; */
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Hanken Grotesk", sans-serif;
+    font-size: 17px;
+    text-align: center;
+  }
+  .line-checkbox {
+    width: 5%;
+  }
+  .checkbox-input {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    border: 0;
+  }
+  .checkbox-input + label {
+    /* background-color: aqua; */
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    height: 24px;
+    transition: all 0.2s linear;
+  }
+ 
+  
+  .checkbox-input + label::before {
+    content: "";
+    width: 22px;
+    height: 22px;
+    background-color: white;
+    border: 1px solid grey;
+    border-radius: 2px;
+  }
+  .checkbox-input:checked + label::after {
+    content: "";
+    background-image: url("../../icons/check-blue.svg");
+    position: absolute;
+    height: 24px;
+    width: 24px;
+  }
+  .line-foto {
+    width: 25%;
+  }
+  .line-foto img {
+    height: 80%;
+    width: 80%;
+    object-fit: contain;
+  }
+  .line-title {
+    width: 30%;
+  }
+  .line-number {
+    width: 20%;
+  }
+  
+  .line-number__minus,
+  .line-number__plus {
+    background-color: transparent;
+    height: 25px;
+    width: 25px;
+    border: none;
+    text-align: center;
+    cursor: pointer;
+  }
+  .line-number__minus {
+    margin-right: 15px;
+  }
+  .line-number__plus {
+    margin-left: 5px;
+  }
+  .line-number__minus:disabled,
+  .line-number__plus:disabled{
+    opacity: 0.2;
+  }
+  .line-price {
+    width: 20%;
+    font-weight: 600;
+    position: relative;
+  }
+  .line-price__button {
+    background-color: transparent;
+    color: red;
+    border: none;
+    position: absolute;
+    bottom: 10px;
+    height: 25px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    cursor: pointer;
+  }
+
+  @media (max-width: 720px) {
+    .line {
+      height: auto;
+      flex-direction: column;
+    }
+    .line-checkbox {
+      height: 40px;
+      width: 100%;
+    }
+    .line-foto {
+      height: 120px;
+      width: 100%;
+    }
+    .line-title {
+      height: 60px;
+      width: 100%;
+    }
+    .line-number {
+      height: 40px;
+      width: 100%;
+    }
+    .line-price {
+      height: 60px;
+      width: 100%;
+      align-items: flex-start;
+    }
+
+    .checkbox-input + label {
+      gap: 5px;
+    }
+
+  }

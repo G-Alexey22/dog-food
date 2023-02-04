@@ -2,13 +2,17 @@ import { memo } from "react";
 import "./Header.css";
 import heart from "../../icons/heart.svg";
 import basket from "../../icons/basket.svg";
+import personadd from "../../icons/person-add.svg";
 import person from "../../icons/person.svg";
 import cardlist from "../../icons/cardlist.svg";
-import { Link } from "react-router-dom";
-
+import { Link, NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { getBasketSelector } from "../../redux/slices/basketSlice";
 
 function Header() {
   // console.log('Header');
+
+  const arrayProducts = useSelector(getBasketSelector); ///Массив продуктов в корзине
 
   return (
     <header>
@@ -17,44 +21,75 @@ function Header() {
           Dog food
         </Link>
       </div>
+
       <div className="wpapper">
         <div>
-          <Link to="/products" className="header-box">
+          <NavLink
+            to="/products"
+            className={({ isActive }) =>
+              isActive ? "header-box header-blue cardlist-blue" : "header-box"
+            }
+          >
             <img
               className="header-box__img"
               src={cardlist}
               alt="icon-cardlist"
             />
             Каталог
-          </Link>
+          </NavLink>
         </div>
 
         <div>
-          <Link to="/favorites" className="header-box">
+          <NavLink
+            to="/favorites"
+            className={({ isActive }) =>
+              isActive ? "header-box header-blue heard-blue" : "header-box"
+            }
+          >
             <img className="header-box__img" src={heart} alt="icon-heart" />
             Избранное
-          </Link>
+          </NavLink>
         </div>
 
-        <div>
-          <Link to="/basket" className="header-box">
+        <div style={{ position: "relative" }}>
+          <NavLink
+            to="/basket"
+            className={({ isActive }) =>
+              isActive ? "header-box header-blue basket-blue" : "header-box"
+            }
+          >
             <img className="header-box__img" src={basket} alt="icon-basket" />
             Корзина
-          </Link>
+          </NavLink>
+          {arrayProducts.length> 0 && <div className="basket__counter">{arrayProducts.length}</div>}
         </div>
 
         <div>
-          <Link to="/signup" className="header-box">
-            <img className="header-box__img" src={person} alt="icon-person" />
+          <NavLink
+            to="/signup"
+            className={({ isActive }) =>
+              isActive ? "header-box header-blue person-add-blue" : "header-box"
+            }
+          >
+            <img
+              className="header-box__img"
+              src={personadd}
+              alt="icon-person-add"
+            />
             Регистрация
-          </Link>
+          </NavLink>
         </div>
 
         <div>
-          <Link to="/signin" className="header-box">
+          <NavLink
+            to="/signin"
+            className={({ isActive }) =>
+              isActive ? "header-box header-blue person-blue" : "header-box"
+            }
+          >
             <img className="header-box__img" src={person} alt="icon-person" />
             Авторизация
-          </Link>
+          </NavLink>
         </div>
       </div>
     </header>

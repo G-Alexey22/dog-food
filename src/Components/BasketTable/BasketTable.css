@@ -1,0 +1,273 @@
+.basket-error {
+  /* background-color: aqua; */
+  margin-top: 25px;
+  max-width: 1100px;
+  width: 90vw;
+  min-height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.basket-error__title {
+  width: 300px;
+  margin-bottom: 20px;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 35px;
+  color: rgba(0, 0, 0, 0.88);
+  text-align: center;
+}
+
+.basket-error__button {
+  height: 40px;
+  width: 300px;
+  border-radius: 5px;
+  border: 1px solid grey;
+  background-color: chartreuse;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.2s linear;
+}
+.basket-error__button:hover {
+  transform: scale(1.02);
+}
+.basket-error__button:active {
+  transform: scale(0.95);
+}
+
+.table-empty{
+   /* background-color: chartreuse; */
+   max-width: 1100px;
+   width: 90vw;
+   min-height: 60vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+}
+.table-empty__img{
+  background-image: url("../../icons/dog-emptybowl.jpg");
+ background-repeat: no-repeat;
+ background-size: cover;
+  height: 270px;
+  width: 270px;
+  border-radius: 50%;
+}
+.table-empty__title{
+  /* background-color: aqua; */
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 25px;
+  font-weight: 700;
+  margin-top: 5px;
+}
+.table-empty__info{
+  margin-top: 10px;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 17px;
+  text-align: center;
+}
+.table-empty__button{
+  background-color: chartreuse;
+  height: 40px;
+  width: 200px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: 1px solid grey;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: black;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.table-empty__button:hover{
+  transform: scale(1.02);
+}
+.table-empty__button:active{
+  transform: scale(0.95);
+}
+
+.table-container {
+  /* background-color: coral; */
+  margin-top: 40px;
+  max-width: 1100px;
+  width: 90vw;
+  min-height: 60vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.table {
+  /* background-color: chartreuse; */
+  height: auto;
+  width: calc(100% - 300px);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.selection {
+  background-color: white;
+  height: 40px;
+  width: 99%;
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding-left: 5px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 17px;
+  text-align: center;
+  transition: all 0.2s linear;
+}
+.selection label:hover{
+  color: red;
+}
+.selection__button {
+  background-color: transparent;
+  border: none;
+  height: 25px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 17px;
+  cursor: pointer;
+  transition: all 0.2s linear;
+}
+.selection__button:hover {
+  color: red;
+}
+
+
+.basket {
+  /* background-color: rgb(166, 228, 21); */
+  width: 300px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.basket-title {
+  /* background-color: cornflowerblue; */
+  height: 50px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 25px;
+  font-weight: 600;
+}
+.basket-goods,
+.basket-sale,
+.basket-price {
+  /* background-color: rgb(191, 89, 25); */
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 16px;
+}
+
+.basket-price {
+  height: 70px;
+  font-size: 20px;
+  font-weight: 600;
+}
+.basket-container {
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.basket-container-button {
+  background-color: chartreuse;
+  height: 40px;
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 5px;
+  border: 1px solid grey;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: black;
+  cursor: pointer;
+}
+.red {
+  color: red;
+}
+.blue {
+  color: blue;
+}
+
+.basket-empty{
+  background-color: white;
+  width: 300px;
+  padding: 15px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: center;
+  flex-direction: column;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 17px;
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid grey;
+}
+.basket-empty__button{
+  background-color: chartreuse;
+  height: 40px;
+  width: 100%;
+  margin-top: 20px;
+  border-radius: 5px;
+  border: 1px solid grey;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: black;
+  cursor: pointer;
+}
+
+
+@media (max-width: 1024px) {
+  .table-container {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .table {
+    width: 90vw;
+  }
+}
+
+@media (max-width: 720px) {
+  .table-container {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .table {
+    height: auto;
+    width: 300px;
+    display: block;
+  }
+  
+  .selection {
+    height: 40px;
+    width: 100%;
+    font-size: 15px;
+    white-space: nowrap;
+  }
+  .checkbox-input + label {
+    gap: 5px;
+  }
+  .selection__button {
+    font-size: 15px;
+    white-space: nowrap;
+  }
+}

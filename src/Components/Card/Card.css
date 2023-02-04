@@ -10,7 +10,7 @@
   align-items: center;
   flex-direction: column;
   box-shadow: 0px 0px 10px 3px #bab9b3;
-  cursor: pointer;
+  /* cursor: pointer; */
   animation: show 1s ease;
   transition: all 0.2s linear;
   position: relative;
@@ -27,7 +27,6 @@
   }
 }
 
-
 .card__img {
   height: 220px;
   width: 220px;
@@ -42,16 +41,15 @@
   left: 8px;
   width: 25px;
   height: 25px;
- 
 }
-.card-sale{
+.card-sale {
   background-color: rgb(247, 32, 32);
   position: absolute;
   top: 5px;
   right: 5px;
   width: 50px;
   height: 22px;
-  border-radius:30px;
+  border-radius: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -59,16 +57,48 @@
   font-size: 15px;
   color: white;
 }
-.card__wight{
+.card-tags-new {
+  background: linear-gradient(to bottom, #22a6d6 5%, #3bd5ed 100%);
+  position: absolute;
+  top: 5px;
+  right: calc(50% - 30px);
+  width: 60px;
+  height: 25px;
+  border-radius: 8px;
+  color: white;
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card-tags-sale{
+  background-color: red;
+  position: absolute;
+  top: 208px;
+  right: 5px;
+  width: 55px;
+  height: 25px;
+  border-radius: 8px;
+  color: white;
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card__wight {
   height: 17px;
   width: 200px;
- /* background-color: chartreuse; */
- font-family: "Roboto";
- font-size: 13px;
- color: rgba(0, 0, 0, 0.7);
- display: flex;
- justify-content: flex-start;
- align-items: center;
+  /* background-color: chartreuse; */
+  font-family: "Roboto";
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .card__title {
@@ -102,20 +132,20 @@
   align-items: center;
   position: relative;
 }
-.new{
+.new {
   color: red;
   display: flex;
   justify-content: center;
   align-items: flex-end;
 }
-.card-wpapper__price-old{
+.card-wpapper__price-old {
   color: black;
   position: absolute;
   top: 0;
   left: 5px;
   font-size: 13px;
   opacity: 0.5;
-  text-decoration:line-through;
+  text-decoration: line-through;
 }
 .card-wpapper__button {
   height: 30px;
@@ -133,6 +163,9 @@
 .card-wpapper__button:hover {
   transform: scale(1.05);
 }
-.card-wpapper__button:active{
+.card-wpapper__button:active {
   transform: scale(0.97);
+}
+.card-wpapper__button:disabled{
+  opacity: 0.6;
 }

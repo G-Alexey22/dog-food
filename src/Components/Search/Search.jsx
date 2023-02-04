@@ -1,21 +1,26 @@
-import { useState, memo } from "react";
+import { useState, memo, useEffect } from "react";
 import classNames from "classnames/bind";
 import "./Search.css";
 import search from "../../icons/search.svg";
 import searchLime from "../../icons/search-lime.svg";
 import eraserLime from "../../icons/eraser-lime.svg";
-import { useOutletContext } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { filterSearch } from "../../redux/slices/filterSlice";
+import { useDebounce } from "../../hooks/useDebounce";
 
 function Search() {
-  // console.log('Search');
-
-  const setSearchQuery = useOutletContext()[2]
+  const dispatch = useDispatch();
   const [valueFromInput, setValueFromInput] = useState(""); //Состояние строки ввода
+
+  const debouncedSearchValue = useDebounce(valueFromInput, 500);
+
+  useEffect(() => {
+    dispatch(filterSearch(debouncedSearchValue));
+  }, [debouncedSearchValue, dispatch]);
 
   //Функция очиски Input
   function clearInput() {
     setValueFromInput("");
-    setSearchQuery("");
   }
 
   //Функция записи введенного текста в переменную valueFromInput
@@ -23,29 +28,13 @@ function Search() {
     setValueFromInput(event.target.value);
   }
 
-  //Функция отправки поискового запроса при потере фoкуса Input
-  function lossOfFocus() {
-    setSearchQuery(valueFromInput);
-  }
-
-  //Функция отправки поискового запроса при нажатии кнопки Найти
-  function clickSearchButton() {
-    setSearchQuery(valueFromInput);
-  }
-
-  //Функция отправки поискового запроса при нажатии клавиши Enter
-  function pressEnter(event) {
-    if (event.keyCode === 13) {
-      setSearchQuery(valueFromInput);
-    }
-  }
 
   return (
     <div className="search-container">
       <button
         title="Очистить поиск"
         className={classNames("search-container__clear", {
-          active: Boolean(valueFromInput),
+          active: valueFromInput,
         })} // Отображение кнопки Очитить поиск, если Input сожержит текст
         onClick={clearInput} // Очистить Input
       >
@@ -62,19 +51,12 @@ function Search() {
         placeholder="Поиск по каталогу"
         value={valueFromInput}
         onInput={textInput} //Запись текста в переменную valueFromInput
-        onBlur={lossOfFocus} //Потеря фoкуса Input
-        onKeyDown={pressEnter} //Отправка поискового запроса при нажатии клавиши Enter
       />
-      <button
-        title="Найти"
+      <img
         className="search-container__find"
-        onClick={clickSearchButton} //Отправка поискового запроса при нажатии кнопки Найти
-      >
-        <img
-          src={Boolean(!valueFromInput) ? `${search}` : `${searchLime}`} //Изменение цвета иконки
-          alt="icon-search"
-        />
-      </button>
+        src={!valueFromInput ? `${search}` : `${searchLime}`} //Изменение цвета иконки
+        alt="icon-search"
+      />
     </div>
   );
 }

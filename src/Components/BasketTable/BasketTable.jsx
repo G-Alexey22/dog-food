@@ -10,12 +10,11 @@ import { useQuery } from "@tanstack/react-query";
 import { Loader } from "../Loader/Loader";
 import { getTokenSelector } from "../../redux/slices/userSlice";
 import { Link } from "react-router-dom";
+import { Api } from "../../api/DogFoodApi";
 
 export function BasketTable() {
-  
   const token = useSelector(getTokenSelector);
   const dispatch = useDispatch();
-
   const basket = useSelector(getBasketSelector); //Массив продуктов в корзине
   const checkedAll = basket.every((item) => item.isChecked); //true если выбраны все продукты
   const checkedOne = basket.some((item) => item.isChecked); //true если выбран один продукт
@@ -39,12 +38,7 @@ export function BasketTable() {
   function getProductsById(arrayIdProducts) {
     return Promise.all(
       arrayIdProducts.map((id) =>
-        fetch("https://api.react-learning.ru/products/" + id, {
-          headers: {
-            "content-type": "application/json",
-            authorization: token,
-          },
-        }).then((response) => response.json())
+        Api.getProductsById(token, id).then((response) => response.json())
       )
     );
   }
@@ -55,29 +49,24 @@ export function BasketTable() {
     queryFn: () => getProductsById(arrayIdProducts),
   });
 
-  if (token ==='')
-  return (
-    <div className="basket-error">
-      <div className="basket-error__title">
-        Для просмотра товаров в корзине необходима авторизация!
-      </div>
-      <div>
-        <Link to="/signin">
-          <button className="basket-error__button">
-            Перейти на страницу авторизации
-          </button>
-        </Link>
-      </div>
-    </div>
-  );
-
-
-  if (isLoading) {
+  if (token === "")
     return (
-      <div className="loader-container">
-        <Loader />
+      <div className="basket-error">
+        <div className="basket-error__title">
+          Для просмотра товаров в корзине необходима авторизация!
+        </div>
+        <div>
+          <Link to="/signin">
+            <button className="basket-error__button">
+              Перейти на страницу авторизации
+            </button>
+          </Link>
+        </div>
       </div>
     );
+
+  if (isLoading) {
+    return <Loader />;
   }
 
   for (let i = 0; i < data.length; i++) {
@@ -85,7 +74,7 @@ export function BasketTable() {
     data[i].isChecked = basket[i].isChecked;
   }
   // Кол-во товаров
-  const goods = data 
+  const goods = data
     .filter((e) => e.isChecked === true)
     .reduce((sum, e) => sum + e.count, 0);
 
@@ -103,7 +92,6 @@ export function BasketTable() {
       0
     );
 
-  
   return (
     <>
       {basket.length === 0 && (
@@ -188,7 +176,7 @@ export function BasketTable() {
                 <span>{total.toLocaleString("ru")} ₽</span>
               </div>
               <div className="basket-container">
-                <button className="basket-container-button">
+                <button className="basket-container__button">
                   Оформить заказ
                 </button>
               </div>

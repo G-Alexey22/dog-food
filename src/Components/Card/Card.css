@@ -41,8 +41,9 @@
   left: 8px;
   width: 25px;
   height: 25px;
+  cursor: pointer;
 }
-.card-sale {
+.card-discount {
   background-color: rgb(247, 32, 32);
   position: absolute;
   top: 5px;
@@ -57,7 +58,7 @@
   font-size: 15px;
   color: white;
 }
-.card-tags-new {
+.card-tags__new {
   background: linear-gradient(to bottom, #22a6d6 5%, #3bd5ed 100%);
   position: absolute;
   top: 5px;
@@ -73,7 +74,7 @@
   align-items: center;
   justify-content: center;
 }
-.card-tags-sale{
+.card-tags__sale{
   background-color: red;
   position: absolute;
   top: 208px;
@@ -114,6 +115,9 @@
   font-weight: 500;
   text-align: center;
 }
+.card__title-fuchsia{
+  background-color: fuchsia;
+ }
 .card-wpapper {
   display: flex;
   justify-content: space-between;
@@ -161,7 +165,7 @@
   transition: all 0.2s linear;
 }
 .card-wpapper__button:hover {
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 .card-wpapper__button:active {
   transform: scale(0.97);

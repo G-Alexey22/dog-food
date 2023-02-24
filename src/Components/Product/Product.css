@@ -1,0 +1,390 @@
+.product-error {
+  /* background-color: aqua; */
+  margin-top: 25px;
+  max-width: 1100px;
+  width: 90vw;
+  min-height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.product-error__title {
+  width: 300px;
+  margin-bottom: 20px;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 35px;
+  color: rgba(0, 0, 0, 0.88);
+  text-align: center;
+}
+.product-error__button {
+  height: 40px;
+  width: 300px;
+  border-radius: 5px;
+  border: 1px solid grey;
+  background-color: chartreuse;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.2s linear;
+}
+.product-error__button:hover {
+  transform: scale(1.02);
+}
+.product-error__button:active {
+  transform: scale(0.97);
+}
+
+.product {
+  /* background-color: aqua; */
+  margin-top: 25px;
+  max-width: 1100px;
+  width: 90vw;
+  min-height: 60vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+.product-back {
+  /* background-color: #22a6d6; */
+  height: 45px;
+  width: 100%;
+}
+.product-back__button {
+  background-color: transparent;
+  border: 1px solid grey;
+  border-radius: 5px;
+  height: 35px;
+  font-family: Arial;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s linear;
+}
+.product-back__button:hover {
+  color: #4710aa;
+  border: 1px solid #4710aa;
+}
+.product-box {
+  /* background-color: coral; */
+  min-height: 350px;
+  width: 700px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+}
+.product-img {
+  background-color: white;
+  border-radius: 20px;
+  height: 350px;
+  width: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.product-img img {
+  height: 95%;
+  width: 95%;
+  object-fit: contain;
+}
+.product-discount {
+  background-color: red;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 50px;
+  height: 22px;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Roboto";
+  font-size: 15px;
+  color: white;
+}
+.product__new {
+  background: linear-gradient(to bottom, #22a6d6 5%, #3bd5ed 100%);
+  position: absolute;
+  top: 5px;
+  right: calc(50% - 30px);
+  width: 60px;
+  height: 25px;
+  border-radius: 8px;
+  color: white;
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.product__sale {
+  background-color: red;
+  position: absolute;
+  bottom: 15px;
+  right: 5px;
+  width: 55px;
+  height: 25px;
+  border-radius: 8px;
+  color: white;
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.product-info {
+  /* background-color: brown; */
+  height: 350px;
+  width: 270px;
+}
+.product-info__title {
+  /* background-color: aqua; */
+  width: 100%;
+  min-height: 50px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-family: "Segoe UI";
+  font-size: 18px;
+  font-weight: 600;
+}
+.product-info__price {
+  height: 50px;
+  min-width: 40%;
+  /* background-color: coral; */
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+}
+.product-new {
+  color: red;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+.product-info__old {
+  color: black;
+  position: absolute;
+  top: 0;
+  left: 5px;
+  font-size: 15px;
+  opacity: 0.5;
+  text-decoration: line-through;
+}
+.product-info__wight {
+  /* background-color: aqua; */
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.7);
+}
+.product-info__like {
+  /* background-color: aqua; */
+  min-height: 25px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 16px;
+  padding-left: 5px;
+}
+
+.product-favorite__blue {
+  background-color: transparent;
+  /* background-color: #3bd5ed; */
+  color: rgb(12, 19, 204);
+  border: none;
+  height: 35px;
+  width: 150px;
+  font-family: Arial;
+  font-size: 16px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.product-favorite__blue:hover {
+  color: red;
+}
+.product-button {
+  /* background-color: #3bd5ed; */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 5px;
+}
+.product-button__lime,
+.product-button__darkblue,
+.product-button__yellow,
+.product-button__red {
+  height: 33px;
+  width: 160px;
+  border: 1px solid grey;
+  border-radius: 10px;
+  font-family: "Roboto";
+  font-size: 17px;
+  background-color: lawngreen;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.product-button__lime:disabled,
+.product-button__darkblue:disabled,
+.product-button__darkbluee:disabled,
+.product-button__yellow:disabled {
+  opacity: 0.7;
+}
+.product-button__darkblue {
+  font-size: 17px;
+  background-color: rgb(17, 64, 151);
+  color: white;
+}
+.product-button__red {
+  font-size: 17px;
+  background-color: red;
+  color: white;
+}
+.product-button__yellow {
+  background-color: yellow;
+}
+.product-button__lime:hover,
+.product-button__darkblue:hover,
+.product-button__red:hover .product-button__yellow:hover {
+  transform: scale(1.02);
+}
+.product-button__lime:active,
+.product-button__darkblue:active,
+.product-button__red:active,
+.product-button__yellow:active {
+  transform: scale(0.98);
+}
+
+.comment-box {
+  /* background-color: coral; */
+  margin-top: 15px;
+  min-height: 150px;
+  width: 90vw;
+  max-width: 700px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 5px;
+}
+.comment-box__description {
+  /* background-color: #3bd5ed; */
+  width: 100%;
+  font-family: Arial;
+  font-size: 16px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  text-align: justify;
+}
+.comment-box__title {
+  /* background-color: #3bd5ed; */
+  height: 30px;
+  width: 100%;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+}
+.comment-box__rating {
+  /* background-color: #3bd5ed; */
+  height: 30px;
+  width: 100%;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 5px;
+}
+.comment-box__rating-button {
+  border: none;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.comment-box-add {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: column;
+  gap: 5px;
+}
+.comment-box-add__input {
+  min-height: 60px;
+  width: calc(100% - 10px);
+  background-color: white;
+  font-family: Arial;
+  font-size: 16px;
+  font-weight: 500;
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 5px;
+  resize: none;
+}
+.comment-box-add__button {
+  height: 35px;
+  width: 220px;
+  border: 1px solid grey;
+  border-radius: 10px;
+  font-family: Arial;
+  font-size: 17px;
+  font-weight: 500;
+  color: white;
+  background-color: rgb(17, 64, 151);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.comment-box-add__button:hover {
+  transform: scale(1.02);
+}
+.comment-box-add__button:active {
+  transform: scale(0.97);
+}
+.comment-title {
+  margin-top: 5px;
+  width: 100%;
+  font-family: "Roboto";
+  font-size: 17px;
+  font-weight: 600;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+.comment-title__span {
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.7);
+}
+.comment__text {
+  background-color: transparent;
+  width: calc(100% - 10px);
+  padding: 5px;
+  height: auto;
+  font-family: Arial;
+  font-size: 16px;
+  text-align: justify;
+}
+
+@media (max-width: 720px) {
+  .product-box {
+    gap: 5px;
+    flex-direction: column;
+  }
+}

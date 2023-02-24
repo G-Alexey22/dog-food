@@ -1,16 +1,26 @@
+.loader-container {
+  /* background-color: aqua; */
+  margin-top: 25px;
+  max-width: 1100px;
+  width: 90vw;
+  min-height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .loader {
-    height: 150px;
-    width: 150px;
-    border-radius: 50%;
-    background: radial-gradient(farthest-side, #766df4 94%, #0000) top/16px 16px
-        no-repeat,
-      conic-gradient(#0000 30%, #766df4);
-    mask: radial-gradient(farthest-side, #0000 calc(100% - 16px), #000 0);
-    animation: rotate 1s infinite linear;
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  background: radial-gradient(farthest-side, #766df4 94%, #0000) top/16px 16px
+      no-repeat,
+    conic-gradient(#0000 30%, #766df4);
+  mask: radial-gradient(farthest-side, #0000 calc(100% - 16px), #000 0);
+  animation: rotate 1s infinite linear;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(1turn);
   }
-  
-  @keyframes rotate {
-    100% {
-      transform: rotate(1turn);
-    }
-  }
+}

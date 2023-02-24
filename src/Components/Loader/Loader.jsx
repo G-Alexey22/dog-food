@@ -1,5 +1,10 @@
 import "./Loader.css";
 
 export function Loader() {
-  return <div className="loader"></div>;
+  return (
+    <div className="loader-container">
+      <div className="loader"></div>
+    </div>
+  )
+  
 }

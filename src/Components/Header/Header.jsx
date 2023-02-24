@@ -1,4 +1,3 @@
-import { memo } from "react";
 import "./Header.css";
 import heart from "../../icons/heart.svg";
 import basket from "../../icons/basket.svg";
@@ -8,11 +7,14 @@ import cardlist from "../../icons/cardlist.svg";
 import { Link, NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getBasketSelector } from "../../redux/slices/basketSlice";
+import { getfavoriteSelector } from "../../redux/slices/favoriteSlice";
+import { getTokenSelector,getUserSelector } from "../../redux/slices/userSlice";
 
-function Header() {
-  // console.log('Header');
-
+export function Header() {
+  const token = useSelector(getTokenSelector);
+  const user = useSelector(getUserSelector);
   const arrayProducts = useSelector(getBasketSelector); ///Массив продуктов в корзине
+  const arrayFavorite = useSelector(getfavoriteSelector); //Массив продуктов в избранном
 
   return (
     <header>
@@ -39,7 +41,7 @@ function Header() {
           </NavLink>
         </div>
 
-        <div>
+        <div style={{ position: "relative" }}>
           <NavLink
             to="/favorites"
             className={({ isActive }) =>
@@ -49,6 +51,9 @@ function Header() {
             <img className="header-box__img" src={heart} alt="icon-heart" />
             Избранное
           </NavLink>
+          {arrayFavorite.length > 0 && token && (
+            <div className="favorit__counter">{arrayFavorite.length}</div>
+          )}
         </div>
 
         <div style={{ position: "relative" }}>
@@ -61,7 +66,9 @@ function Header() {
             <img className="header-box__img" src={basket} alt="icon-basket" />
             Корзина
           </NavLink>
-          {arrayProducts.length> 0 && <div className="basket__counter">{arrayProducts.length}</div>}
+          {arrayProducts.length > 0 && token && (
+            <div className="basket__counter">{arrayProducts.length}</div>
+          )}
         </div>
 
         <div>
@@ -80,20 +87,34 @@ function Header() {
           </NavLink>
         </div>
 
-        <div>
+        {!token && (
+          <div>
+            <NavLink
+              to="/signin"
+              className={({ isActive }) =>
+                isActive ? "header-box header-blue person-blue" : "header-box"
+              }
+            >
+              <img className="header-box__img" src={person} alt="icon-person" />
+              Авторизация
+            </NavLink>
+          </div>
+        )}
+
+        {token && (
+          <div>
           <NavLink
-            to="/signin"
+            to="/user"
             className={({ isActive }) =>
-              isActive ? "header-box header-blue person-blue" : "header-box"
+              isActive ? "header-box header-blue" : "header-box"
             }
           >
-            <img className="header-box__img" src={person} alt="icon-person" />
-            Авторизация
+            <img className="header-box__avatar" src={user.avatar} alt="icon-person" />
+            {user.name}
           </NavLink>
         </div>
+        )}
       </div>
     </header>
   );
 }
-
-export const HeaderMemo = memo(Header);

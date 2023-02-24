@@ -2,26 +2,27 @@ import "./SigninForm.css";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { SigninFormValidation } from "./SigninFormValidation";
 import { useMutation } from "@tanstack/react-query";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getTokenSelector, userAdd ,userRemove} from "../../redux/slices/userSlice.js";
+import { getTokenSelector, userAdd } from "../../redux/slices/userSlice.js";
+import { useNavigate } from "react-router-dom";
+import { Api } from "../../api/DogFoodApi";
 
 export function SigninForm() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const token = useSelector(getTokenSelector);  //Токен из Store
- 
-
+  const token = useSelector(getTokenSelector); //Токен из Store
   const [statusResponse, setStatusResponse] = useState(""); //Статус ответа
+
+  useEffect(() => {
+    if (token) {
+      navigate(`/user`);
+    }
+  }, [navigate, token]);
 
   const { mutateAsync, isLoading } = useMutation({
     mutationFn: (values) =>
-      fetch("https://api.react-learning.ru/signin", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(values),
-      })
+      Api.signin(values)
         .then((response) => {
           if (response.status === 401) {
             setStatusResponse("Не правильные логин или пароль.");
@@ -30,7 +31,6 @@ export function SigninForm() {
             setStatusResponse("Пользователь с указанным email не найден.");
           }
           if (response.status === 200) {
-            setStatusResponse("Вы успешно авторизованы.");
             return response.json();
           }
         })
@@ -38,6 +38,7 @@ export function SigninForm() {
           if (response !== undefined) {
             // console.log(response);
             dispatch(userAdd(response));
+            navigate(`/user`);
           }
         }),
   });
@@ -45,12 +46,6 @@ export function SigninForm() {
   //Функция отправки формы
   function SubmitSigninForm(values) {
     mutateAsync(values);
-    // console.log(values)
-  }
-
-  //Удаление User
-  function deleteUser() {
-    dispatch(userRemove())
   }
 
   return (
@@ -75,8 +70,10 @@ export function SigninForm() {
               name="email"
               type="text"
             />
-            <ErrorMessage name="email" />
-
+            <ErrorMessage
+              name="email"
+              render={(msg) => <div className="signin-form-error">{msg}</div>}
+            />
             <label className="signin-form__label" htmlFor="password">
               Пароль
             </label>
@@ -86,26 +83,17 @@ export function SigninForm() {
               type="password"
               placeholder="Пароль"
             />
-            <ErrorMessage name="password" />
-
+            <ErrorMessage
+              name="password"
+              render={(msg) => <div className="signin-form-error">{msg}</div>}
+            />
             <div className="signin-form__message">{statusResponse}</div>
-
             <button
               disabled={isLoading || token}
               className="signin-form__button"
               type="submit"
             >
               Войти
-            </button>
-            <button
-              disabled={isLoading || !token}
-              className="signin-form__button"
-              onClick={()=>{
-                deleteUser()
-                setStatusResponse("Вы успешно вышли из учётной записи.")
-              }}
-            >
-              Выйти
             </button>
           </Form>
         </Formik>

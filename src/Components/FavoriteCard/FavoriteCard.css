@@ -1,0 +1,147 @@
+.favline {
+  background-color: darkcyan;
+  background-color: white;
+  height: 120px;
+  width: 90vw;
+  max-width: 805px;
+  display: flex;
+  border-radius: 5px;
+  border: 1px solid grey;
+  margin-bottom: 10px;
+}
+
+.favline-checkbox,
+.favline-foto,
+.favline-title,
+.favline-price,
+.favline-box {
+  /* background-color: aqua; */
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 17px;
+  text-align: center;
+}
+.favline-checkbox {
+  width: 5%;
+}
+.favline-checkbox__input {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  border: 0;
+}
+.favline-checkbox__input + label {
+  /* background-color: aqua; */
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  height: 24px;
+  transition: all 0.2s linear;
+}
+
+.favline-checkbox__input + label::before {
+  content: "";
+  width: 22px;
+  height: 22px;
+  background-color: white;
+  border: 1px solid grey;
+  border-radius: 2px;
+}
+.favline-checkbox__input:checked + label::after {
+  content: "";
+  background-image: url("../../icons/check-blue.svg");
+  position: absolute;
+  height: 24px;
+  width: 24px;
+}
+.favline-foto {
+  width: 25%;
+}
+.favline-foto img {
+  height: 80%;
+  width: 80%;
+  object-fit: contain;
+}
+.favline-title {
+  width: 30%;
+}
+.favline-price {
+  width: 10%;
+}
+.favline-box {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.favline-box__button-lime,
+.favline-box__button-red {
+  min-height: 30px;
+  width: 150px;
+  border: 1px solid grey;
+  border-radius: 10px;
+  font-family: Arial;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s linear;
+}
+.favline-box__button-lime {
+  background-color: lawngreen;
+  color: black;
+}
+.favline-box__button-red {
+  background-color: red;
+  color: white;
+}
+
+.favline-box__button-lime:hover,
+.favline-box__button-red:hover {
+  transform: scale(1.02);
+}
+.favline-box__button-lime:active,
+.favline-box__button-red:active {
+  transform: scale(0.97);
+}
+.favline-box__button-lime:disabled{
+  opacity: 0.6;
+}
+
+@media (max-width: 720px) {
+  .favline {
+    height: auto;
+    flex-direction: column;
+  }
+  .favline-checkbox {
+    height: 40px;
+    width: 100%;
+  }
+  .favline-foto {
+    height: 120px;
+    width: 100%;
+  }
+  .favline-title {
+    height: 60px;
+    width: 100%;
+  }
+  .favline-price {
+    height: 40px;
+    width: 100%;
+  }
+  .favline-box {
+    height: 100px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  .favline-checkbox__input + label {
+    gap: 5px;
+  }
+}

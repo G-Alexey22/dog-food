@@ -1,7 +1,7 @@
 import { StartPage } from "../Components/StartPage/StartPage";
 
 
-export function FirstPage() {
+export function First() {
     return ( 
         <StartPage/>
      );

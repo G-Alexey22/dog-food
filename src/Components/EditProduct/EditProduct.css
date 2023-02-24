@@ -1,0 +1,125 @@
+.editProduct {
+  /* background-color: aqua; */
+  width: 310px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.editProduct__image {
+  /* background-color: chartreuse; */
+  height: 200px;
+  width: 310px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.editProduct__image img {
+  height: 95%;
+  width: 95%;
+  object-fit: contain;
+}
+.editProduct-form {
+  /* background-color: cornflowerblue; */
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.editProduct-box {
+  width: calc(150px - 4px);
+  display: flex;
+  flex-direction: column;
+}
+.wrapper {
+  display: flex;
+  gap: 8px;
+}
+.editProduct__label {
+  margin: 8px 10px 5px 10px;
+  height: 20px;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.88);
+  position: relative;
+}
+.required::before {
+  content: "*";
+  position: absolute;
+  top: 0;
+  left: -10px;
+  color: red;
+}
+.editProduct__input {
+  background-color: white;
+  color: rgba(0, 0, 0, 0.88);
+  padding: 4px 11px;
+  font-size: 16px;
+  line-height: 1.57;
+  outline: none;
+  border-radius: 6px;
+  border: 1px solid gray;
+}
+.editProduct__textarea {
+  background-color: white;
+  height: 60px;
+  color: rgba(0, 0, 0, 0.88);
+  padding: 4px 11px;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 16px;
+  line-height: 1.57;
+  outline: none;
+  border-radius: 6px;
+  border: 1px solid gray;
+  resize: none;
+}
+.editProduct-error {
+  color: red;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.editProduct__message {
+  margin: 5px 10px 5px 10px;
+  color: green;
+  text-align: left;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 16px;
+}
+.editProduct-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.editProduct-button-red,
+.editProduct-button-lime {
+  height: 30px;
+  width: 145px;
+  border-radius: 5px;
+  border: 1px solid grey;
+  font-family: Arial;
+  font-size: 16px;
+  transition: all 0.2s linear;
+  cursor: pointer;
+}
+.editProduct-button-lime {
+  background-color: chartreuse;
+}
+.editProduct-button-red {
+  background-color: red;
+  color: white;
+}
+.editProduct-button-lime:disabled {
+  opacity: 0.7;
+}
+
+.editProduct-button-red:hover,
+.editProduct-button-lime:hover {
+  transform: scale(1.02);
+}
+.editProduct-button-red:active,
+.editProduct-button-lime:active {
+  transform: scale(0.97);
+}

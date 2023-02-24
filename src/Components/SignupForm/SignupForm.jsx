@@ -1,22 +1,16 @@
 import "./SignupForm.css";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useMutation } from "@tanstack/react-query";
-
 import { SignupFormValidation } from "./SignupFormValidation";
-import { useState} from "react";
+import { useState } from "react";
+import { Api } from "../../api/DogFoodApi";
 
 export function SignupForm() {
   const [statusResponse, setStatusResponse] = useState(""); //Статус ответа
 
   const { mutateAsync } = useMutation({
     mutationFn: (values) =>
-      fetch("https://api.react-learning.ru/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(values),
-      }).then((response) => {
+      Api.signup(values).then((response) => {
         if (response.status === 409) {
           setStatusResponse("Пользователь с данным email уже существует.");
         }
@@ -34,7 +28,6 @@ export function SignupForm() {
   //Функция отправки формы
   function SubmitSignupForm(values) {
     mutateAsync(values);
-    // console.log(values)
   }
 
   return (
@@ -60,8 +53,10 @@ export function SignupForm() {
               name="email"
               type="text"
             />
-            <ErrorMessage name="email" />
-
+            <ErrorMessage
+              name="email"
+              render={(msg) => <div className="signup-form-error">{msg}</div>}
+            />
             <label className="signup-form__label" htmlFor="group">
               Группа
             </label>
@@ -71,8 +66,10 @@ export function SignupForm() {
               name="group"
               type="text"
             />
-            <ErrorMessage name="group" />
-
+            <ErrorMessage
+              name="group"
+              render={(msg) => <div className="signup-form-error">{msg}</div>}
+            />
             <label className="signup-form__label" htmlFor="password">
               Пароль
             </label>
@@ -82,10 +79,11 @@ export function SignupForm() {
               name="password"
               type="password"
             />
-            <ErrorMessage name="password" />
-
+            <ErrorMessage
+              name="password"
+              render={(msg) => <div className="signup-form-error">{msg}</div>}
+            />
             <div className="signup-form__message">{statusResponse}</div>
-
             <button className="signup-form__button" type="submit">
               Регистрация
             </button>

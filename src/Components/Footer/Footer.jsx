@@ -1,4 +1,3 @@
-import { memo } from "react";
 import "./Footer.css";
 import visa from "../../icons/visa.svg";
 import mastercard from "../../icons/mastercard.svg";
@@ -9,7 +8,7 @@ import vk from "../../icons/vk.svg";
 import instagram from "../../icons/instagram.svg";
 import viber from "../../icons/viber.svg";
 
-function Footer() {
+export function Footer() {
   // console.log('Footer')
   return (
     <footer>
@@ -51,5 +50,3 @@ function Footer() {
     </footer>
   );
 }
-
-export const FooterMemo = memo(Footer);

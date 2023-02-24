@@ -11,7 +11,6 @@ header {
 a {
   text-decoration: none;
 }
-
 .header-logo {
   margin-left: 10px;
   display: flex;
@@ -26,13 +25,11 @@ a {
   color: black;
   padding-bottom: 10px;
 }
-
 .wpapper {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 .header-box {
   background-color: darkcyan;
   background-color: transparent;
@@ -48,14 +45,21 @@ a {
   justify-content: center;
   align-items: center;
   text-align: center;
-
 }
 .header-box__img {
   height: 23px;
   margin-right: 5px;
   object-fit: fill;
 }
-
+.header-box__avatar {
+  background:transparent;
+  border: 1px solid grey;
+  height: 30px;
+  width: 30px;
+  margin-right: 5px;
+  border-radius: 50%;
+  object-fit:contain;
+}
 .header-box:hover {
   color: #4710aa;
 }
@@ -79,7 +83,8 @@ a {
   content: url('../../icons/person-blue.svg');
 }
 
-.basket__counter{
+.basket__counter,
+.favorit__counter{
   position: absolute;
   top: -5px;
   right: 0px;
@@ -95,7 +100,17 @@ a {
   font-weight: 700;
   color: white;
 }
-
+@media (max-width: 1024px) {
+  header {
+    flex-direction: column;
+  }
+  .logo-container {
+    margin-left: 0px;
+  }
+  .wpapper {
+    gap: 15px;
+  }
+}
 
 @media (max-width: 720px) {
   header {

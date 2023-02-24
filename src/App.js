@@ -1,15 +1,15 @@
 import "./App.css";
-import { HeaderMemo } from "./Components/Header/Header";
-import { FooterMemo } from "./Components/Footer/Footer";
+import { Header } from "./Components/Header/Header";
+import { Footer } from "./Components/Footer/Footer";
 import { Outlet } from "react-router-dom";
 
 function App() {
  
   return (
     <>
-      <HeaderMemo />
-      <Outlet  />
-      <FooterMemo />
+      <Header/>
+      <Outlet />
+      <Footer />
     </>
   );
 }

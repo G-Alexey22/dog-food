@@ -9,12 +9,13 @@ export const initState = {
     token: "",
   },
   basket: [],
+  favorite: [],
   filter: {
-		search: ''
-	}
+    search: "",
+  },
 };
 
 export const getInitState = () => {
-  const dataFromLS = window.localStorage.getItem("REDUX")
+  const dataFromLS = window.localStorage.getItem("REDUX");
   return dataFromLS ? JSON.parse(dataFromLS) : initState;
 };

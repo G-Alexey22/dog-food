@@ -9,8 +9,6 @@
   align-items: center;
 }
 
-
-
 .listcard-error {
   /* background-color: aqua; */
   margin-top: 25px;
@@ -22,7 +20,6 @@
   align-items: center;
   flex-direction: column;
 }
-
 .listcard-error__title {
   width: 300px;
   margin-bottom: 20px;
@@ -31,7 +28,6 @@
   color: rgba(0, 0, 0, 0.88);
   text-align: center;
 }
-
 .listcard-error__button {
   height: 40px;
   width: 300px;
@@ -47,14 +43,21 @@
   transform: scale(1.02);
 }
 .listcard-error__button:active {
-  transform: scale(0.95);
+  transform: scale(0.97);
 }
-
 .listcard {
   /* background-color: blueviolet; */
   margin-top: 25px;
   max-width: 1100px;
   width: 90vw;
+}
+.filtersection {
+  /* background-color: white; */
+  min-height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
 .query-result {
   /* background-color: chartreuse; */
@@ -82,4 +85,21 @@
   justify-content: center;
   align-items: center;
   justify-items: center;
+}
+
+@media (max-width: 1024px) {
+  .filtersection {
+    height: 80px;
+    display: grid;
+    grid-template-columns: 200px 200px 200px;
+    gap: 10px;
+  }
+}
+@media (max-width: 720px) {
+  .filtersection {
+    height: 240px;
+    display: grid;
+    grid-template-columns: 200px;
+    gap: 5px;
+  }
 }

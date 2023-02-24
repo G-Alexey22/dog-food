@@ -1,7 +1,8 @@
+import { ListFavorites } from "../Components/ListFavorites/ListFavorites";
 
 export function Favorites() {
     return ( 
-        <h1>Здесь будет раздел Избранное</h1>
+        <ListFavorites/>
      );
 }
 

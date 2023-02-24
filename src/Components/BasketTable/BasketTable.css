@@ -17,7 +17,6 @@
   color: rgba(0, 0, 0, 0.88);
   text-align: center;
 }
-
 .basket-error__button {
   height: 40px;
   width: 300px;
@@ -33,41 +32,40 @@
   transform: scale(1.02);
 }
 .basket-error__button:active {
-  transform: scale(0.95);
+  transform: scale(0.97);
 }
-
-.table-empty{
-   /* background-color: chartreuse; */
-   max-width: 1100px;
-   width: 90vw;
-   min-height: 60vh;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   flex-direction: column;
+.table-empty {
+  /* background-color: chartreuse; */
+  max-width: 1100px;
+  width: 90vw;
+  min-height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
-.table-empty__img{
+.table-empty__img {
   background-image: url("../../icons/dog-emptybowl.jpg");
- background-repeat: no-repeat;
- background-size: cover;
+  background-repeat: no-repeat;
+  background-size: cover;
   height: 270px;
   width: 270px;
-  border-radius: 50%;
+  border-radius: 50px;
 }
-.table-empty__title{
+.table-empty__title {
   /* background-color: aqua; */
   font-family: "Hanken Grotesk", sans-serif;
   font-size: 25px;
   font-weight: 700;
   margin-top: 5px;
 }
-.table-empty__info{
+.table-empty__info {
   margin-top: 10px;
   font-family: "Hanken Grotesk", sans-serif;
   font-size: 17px;
   text-align: center;
 }
-.table-empty__button{
+.table-empty__button {
   background-color: chartreuse;
   height: 40px;
   width: 200px;
@@ -81,11 +79,11 @@
   cursor: pointer;
   transition: all 0.2s ease;
 }
-.table-empty__button:hover{
+.table-empty__button:hover {
   transform: scale(1.02);
 }
-.table-empty__button:active{
-  transform: scale(0.95);
+.table-empty__button:active {
+  transform: scale(0.97);
 }
 
 .table-container {
@@ -125,7 +123,7 @@
   text-align: center;
   transition: all 0.2s linear;
 }
-.selection label:hover{
+.selection label:hover {
   color: red;
 }
 .selection__button {
@@ -142,8 +140,6 @@
 .selection__button:hover {
   color: red;
 }
-
-
 .basket {
   /* background-color: rgb(166, 228, 21); */
   width: 300px;
@@ -171,7 +167,6 @@
   font-family: "Hanken Grotesk", sans-serif;
   font-size: 16px;
 }
-
 .basket-price {
   height: 70px;
   font-size: 20px;
@@ -183,7 +178,7 @@
   justify-content: center;
   align-items: center;
 }
-.basket-container-button {
+.basket-container__button {
   background-color: chartreuse;
   height: 40px;
   width: 100%;
@@ -203,8 +198,7 @@
 .blue {
   color: blue;
 }
-
-.basket-empty{
+.basket-empty {
   background-color: white;
   width: 300px;
   padding: 15px;
@@ -219,7 +213,7 @@
   border-radius: 5px;
   border: 1px solid grey;
 }
-.basket-empty__button{
+.basket-empty__button {
   background-color: chartreuse;
   height: 40px;
   width: 100%;
@@ -232,7 +226,6 @@
   color: black;
   cursor: pointer;
 }
-
 
 @media (max-width: 1024px) {
   .table-container {
@@ -256,7 +249,6 @@
     width: 300px;
     display: block;
   }
-  
   .selection {
     height: 40px;
     width: 100%;

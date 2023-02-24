@@ -6,12 +6,15 @@ import { store } from "./redux/store";
 import { Provider } from "react-redux";
 
 import App from "./App";
-import { FirstPage } from "./Pages/FirstPage";
+import { First } from "./Pages/First";
 import { Catalog } from "./Pages/Catalog";
 import { Favorites } from "./Pages/Favorites";
 import { Basket } from "./Pages/Basket";
 import { Signup } from "./Pages/Signup";
 import { Signin } from "./Pages/Signin";
+import {Products} from "./Pages/Products"
+import{User} from "./Pages/User"
+import { Error} from "./Pages/Error";
 
 const router = createBrowserRouter([
   {
@@ -20,11 +23,15 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <FirstPage />,
+        element: <First/>,
       },
       {
         path: "products",
         element: <Catalog />,
+      },
+      {
+        path:"products/:productId",
+        element: <Products/>
       },
       {
         path: "favorites",
@@ -42,11 +49,26 @@ const router = createBrowserRouter([
         path: "signin",
         element: <Signin />,
       },
+      {
+        path: "user",
+        element: <User/>
+      },
+      {
+        path:"*",
+        element:<Error/>
+      }
+      
     ],
   },
 ]);
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false, // default: true
+    },
+  },
+});
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

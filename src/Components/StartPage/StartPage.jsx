@@ -13,7 +13,6 @@ export function StartPage() {
         <Link to='/products'>
          <button className="main-title__button">Перейти в каталог</button>
         </Link>
-       
       </div>
     </main>
   );

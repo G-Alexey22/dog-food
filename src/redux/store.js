@@ -1,19 +1,20 @@
-import { configureStore } from '@reduxjs/toolkit'
-import { getInitState } from './initState';
-import { basketReducer } from './slices/basketSlice';
-import { filterReducer } from './slices/filterSlice';
-import {userReducer} from "./slices/userSlice"
+import { configureStore } from "@reduxjs/toolkit";
+import { getInitState } from "./initState";
+import { basketReducer } from "./slices/basketSlice";
+import { favoriteReducer } from "./slices/favoriteSlice";
+import { filterReducer } from "./slices/filterSlice";
+import { userReducer } from "./slices/userSlice";
 
 export const store = configureStore({
-    reducer: {
-        user: userReducer,
-        basket: basketReducer,
-        filter: filterReducer
-    },
-    preloadedState: getInitState()
-  })
+  reducer: {
+    user: userReducer,
+    basket: basketReducer,
+    favorite: favoriteReducer,
+    filter: filterReducer,
+  },
+  preloadedState: getInitState(),
+});
 
-
-  store.subscribe(() => {
-    window.localStorage.setItem("REDUX", JSON.stringify(store.getState()));
-  });
+store.subscribe(() => {
+  window.localStorage.setItem("REDUX", JSON.stringify(store.getState()));
+});

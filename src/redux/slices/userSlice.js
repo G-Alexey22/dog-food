@@ -27,4 +27,6 @@ export const { userAdd, userRemove } = userSlice.actions;
 
 export const getTokenSelector = (state) => state.user.token;
 
+export const getUserSelector = (state) => state.user;
+
 export const userReducer = userSlice.reducer;

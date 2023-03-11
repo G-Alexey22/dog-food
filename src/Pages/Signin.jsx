@@ -1,9 +1,9 @@
 import { SigninForm } from "../Components/SigninForm/SigninForm";
+import { Animation } from "../HOCs/Animation";
 
 export function Signin() {
-  return (
-    <>
-      <SigninForm />
-    </>
-  );
+  const Animate = Animation(() => {
+    return <SigninForm />;
+  });
+  return <Animate />;
 }

@@ -44,12 +44,12 @@ export function BasketTable() {
   }
 
   const { data, isLoading } = useQuery({
-    enabled: token !== "",
+    enabled: Boolean(token),
     queryKey: ["basket", basket],
     queryFn: () => getProductsById(arrayIdProducts),
   });
 
-  if (token === "")
+  if (!token)
     return (
       <div className="basket-error">
         <div className="basket-error__title">
@@ -94,7 +94,7 @@ export function BasketTable() {
 
   return (
     <>
-      {basket.length === 0 && (
+      {!basket.length && (
         <div className="table-empty">
           <div className="table-empty__img"> </div>
           <div className="table-empty__title">В корзине нет товаров</div>
@@ -117,7 +117,7 @@ export function BasketTable() {
         </div>
       )}
 
-      {basket.length > 0 && (
+      {!!basket.length && (
         <div className="table-container">
           <div className="table">
             <div className="selection">

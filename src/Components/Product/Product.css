@@ -227,7 +227,6 @@
 }
 .product-button__lime,
 .product-button__darkblue,
-.product-button__yellow,
 .product-button__red {
   height: 33px;
   width: 160px;
@@ -241,8 +240,7 @@
 }
 .product-button__lime:disabled,
 .product-button__darkblue:disabled,
-.product-button__darkbluee:disabled,
-.product-button__yellow:disabled {
+.product-button__darkbluee:disabled {
   opacity: 0.7;
 }
 .product-button__darkblue {
@@ -255,18 +253,15 @@
   background-color: red;
   color: white;
 }
-.product-button__yellow {
-  background-color: yellow;
-}
+
 .product-button__lime:hover,
 .product-button__darkblue:hover,
-.product-button__red:hover .product-button__yellow:hover {
+.product-button__red:hover {
   transform: scale(1.02);
 }
 .product-button__lime:active,
 .product-button__darkblue:active,
-.product-button__red:active,
-.product-button__yellow:active {
+.product-button__red:active {
   transform: scale(0.98);
 }
 

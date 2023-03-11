@@ -19,14 +19,12 @@ import { getTokenSelector } from "../../redux/slices/userSlice";
 import { getUserSelector } from "../../redux/slices/userSlice";
 import { Loader } from "../Loader/Loader";
 import { useState } from "react";
-import { CreateProduct } from "../../Components/CreateProduct/CreateProduct";
 import { EditProduct } from "../EditProduct/EditProduct";
 import { Api } from "../../api/DogFoodApi";
 
 export function Product() {
   const [rating, setRating] = useState(5);
   const [comment, setComment] = useState("");
-  const [isCreateProductModal, setIsCreateProductModal] = useState(false); //Открытие модального окна создания продукта
   const [isEditProductModal, setIsEditProductModal] = useState(false); //Открытие модального окна создания продукта
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -40,10 +38,7 @@ export function Product() {
     (item) => item.id === productId
   );
 
-  //функция создания продукта
-  function openModalCreateProduct() {
-    setIsCreateProductModal(true);
-  }
+
   //функция редактирования продукта
   function openModalEditProduct() {
     setIsEditProductModal(true);
@@ -72,7 +67,7 @@ export function Product() {
     isLoading,
     refetch,
   } = useQuery({
-    enabled: token !== "",
+    enabled: Boolean(token),
     queryKey: ["product", productId],
     queryFn: () =>
       Api.getProductsById(token,productId)
@@ -84,7 +79,7 @@ export function Product() {
 
   //Получение отзывов о товаре по id
   const reviews = useQuery({
-    enabled: token !== "",
+    enabled: Boolean(token),
     queryKey: ["reviews", productId],
     queryFn: () => Api.getReviews(token,productId)
         .then((response) => response.json())
@@ -120,7 +115,7 @@ export function Product() {
     setComment('')
   }
 
-  if (token === "")
+  if (!token)
     return (
       <div className="product-error">
         <div className="product-error__title">
@@ -209,16 +204,6 @@ export function Product() {
             >
               {disableButtonBuy ? "В корзине" : "Купить"}
             </button>
-            <button
-              className="product-button__yellow"
-              onClick={openModalCreateProduct}
-            >
-              Добавить новый
-            </button>
-            <CreateProduct
-              isOpen={isCreateProductModal}
-              setIsCreateProductModal={setIsCreateProductModal}
-            />
             {user._id === product.author._id && (
               <button
                 className="product-button__darkblue"

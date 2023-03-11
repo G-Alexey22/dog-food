@@ -2,11 +2,23 @@ import "./SignupForm.css";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useMutation } from "@tanstack/react-query";
 import { SignupFormValidation } from "./SignupFormValidation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Api } from "../../api/DogFoodApi";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { getTokenSelector } from "../../redux/slices/userSlice.js";
 
 export function SignupForm() {
+  const navigate = useNavigate();
+  const token = useSelector(getTokenSelector); //Токен из Store
   const [statusResponse, setStatusResponse] = useState(""); //Статус ответа
+
+
+  useEffect(() => {
+    if (token) {
+      navigate(`/user`);
+    }
+  }, [navigate, token]);
 
   const { mutateAsync } = useMutation({
     mutationFn: (values) =>

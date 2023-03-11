@@ -36,12 +36,12 @@ export function ListFavorites() {
     );
   }
   const { data, isLoading } = useQuery({
-    enabled: token !== "",
+    enabled: Boolean(token),
     queryKey: ["basket", favorite],
     queryFn: () => getProductsById(arrayIdFavorite),
   });
 
-  if (token === "")
+  if (!token)
     return (
       <div className="favorite-error">
         <div className="favorite-error__title">
@@ -63,7 +63,7 @@ export function ListFavorites() {
 
   return (
     <>
-      {favorite.length === 0 && (
+      {!favorite.length && (
         <div className="favorite-empty">
           <div className="favorite-empty__img"></div>
           <div className="favorite-empty__title">В избранном нет товаров</div>

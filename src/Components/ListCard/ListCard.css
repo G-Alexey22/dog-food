@@ -59,6 +59,26 @@
   align-items: center;
   gap: 20px;
 }
+.filtersection__button-add{
+  min-height: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: yellow;
+  border: 1px solid grey;
+  border-radius: 8px;
+  color: black;
+  font-family: "Roboto";
+  font-size: 17px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.filtersection__button-add:hover{
+  transform: scale(1.02);
+}
+.filtersection__button-add:active{
+  transform: scale(0.98);
+}
 .query-result {
   /* background-color: chartreuse; */
   min-height: 30px;

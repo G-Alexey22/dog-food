@@ -28,16 +28,7 @@
     width: 320px;
     border-radius: 10px;
     overflow: hidden;
-    animation: show 1s ease 0s 1 normal forwards;
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  @keyframes show {
-    0% {
-      transform: scale(0);
-    }
-    100% {
-      transform: scale(1);
-    }
   }

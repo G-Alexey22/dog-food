@@ -8,7 +8,10 @@ import { Link, NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getBasketSelector } from "../../redux/slices/basketSlice";
 import { getfavoriteSelector } from "../../redux/slices/favoriteSlice";
-import { getTokenSelector,getUserSelector } from "../../redux/slices/userSlice";
+import {
+  getTokenSelector,
+  getUserSelector,
+} from "../../redux/slices/userSlice";
 
 export function Header() {
   const token = useSelector(getTokenSelector);
@@ -51,7 +54,7 @@ export function Header() {
             <img className="header-box__img" src={heart} alt="icon-heart" />
             Избранное
           </NavLink>
-          {arrayFavorite.length > 0 && token && (
+          {!!arrayFavorite.length && token && (
             <div className="favorit__counter">{arrayFavorite.length}</div>
           )}
         </div>
@@ -66,26 +69,30 @@ export function Header() {
             <img className="header-box__img" src={basket} alt="icon-basket" />
             Корзина
           </NavLink>
-          {arrayProducts.length > 0 && token && (
+          {!!arrayProducts.length && token && (
             <div className="basket__counter">{arrayProducts.length}</div>
           )}
         </div>
 
-        <div>
-          <NavLink
-            to="/signup"
-            className={({ isActive }) =>
-              isActive ? "header-box header-blue person-add-blue" : "header-box"
-            }
-          >
-            <img
-              className="header-box__img"
-              src={personadd}
-              alt="icon-person-add"
-            />
-            Регистрация
-          </NavLink>
-        </div>
+        {!token && (
+          <div>
+            <NavLink
+              to="/signup"
+              className={({ isActive }) =>
+                isActive
+                  ? "header-box header-blue person-add-blue"
+                  : "header-box"
+              }
+            >
+              <img
+                className="header-box__img"
+                src={personadd}
+                alt="icon-person-add"
+              />
+              Регистрация
+            </NavLink>
+          </div>
+        )}
 
         {!token && (
           <div>
@@ -103,16 +110,20 @@ export function Header() {
 
         {token && (
           <div>
-          <NavLink
-            to="/user"
-            className={({ isActive }) =>
-              isActive ? "header-box header-blue" : "header-box"
-            }
-          >
-            <img className="header-box__avatar" src={user.avatar} alt="icon-person" />
-            {user.name}
-          </NavLink>
-        </div>
+            <NavLink
+              to="/user"
+              className={({ isActive }) =>
+                isActive ? "header-box header-blue" : "header-box"
+              }
+            >
+              <img
+                className="header-box__avatar"
+                src={user.avatar}
+                alt="icon-person"
+              />
+              {user.name}
+            </NavLink>
+          </div>
         )}
       </div>
     </header>

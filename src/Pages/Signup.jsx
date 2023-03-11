@@ -1,9 +1,9 @@
 import { SignupForm } from "../Components/SignupForm/SignupForm";
+import{Animation} from "../HOCs/Animation"
 
 export function Signup() {
-  return (
-    <>
-      <SignupForm />
-    </>
-  );
+  const Animate = Animation(() => {
+    return <SignupForm />;
+  });
+  return <Animate />;
 }

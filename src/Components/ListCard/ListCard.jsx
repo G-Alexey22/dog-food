@@ -12,8 +12,10 @@ import { Filter } from "../Filter/Filter";
 import { useSearchParams } from "react-router-dom";
 import { sort } from "./sort";
 import {Api} from "../../api/DogFoodApi"
+import { CreateProduct } from "../CreateProduct/CreateProduct";
 
 export const ListCard = () => {
+  const [isCreateProductModal, setIsCreateProductModal] = useState(false); //Открытие модального окна создания продукта
   const token = useSelector(getTokenSelector);
   const search = useSelector(getSearchFromImput);
   const [searchParams] = useSearchParams();
@@ -27,9 +29,13 @@ export const ListCard = () => {
     return initialValue;
   }); //Активный фильтр
 
+   //функция создания продукта
+   function openModalCreateProduct() {
+    setIsCreateProductModal(true);
+  }
 
   const { data, isLoading } = useQuery({
-    enabled: token !== "",
+    enabled: Boolean(token),
     queryKey: ["products", search, currentFilter],
     queryFn: ()=> Api.getProducts(token,search)
         .then((response) => response.json())
@@ -38,7 +44,7 @@ export const ListCard = () => {
         }),
   });
 
-  if (token === "")
+  if (!token)
     return (
       <div className="listcard-error">
         <div className="listcard-error__title">
@@ -74,14 +80,21 @@ export const ListCard = () => {
             setCurrentFilter={setCurrentFilter}
           />
         ))}
+        <button className="filtersection__button-add" type="button"
+        onClick={openModalCreateProduct}
+        >Добавить новый</button>
+          <CreateProduct
+              isOpen={isCreateProductModal}
+              setIsCreateProductModal={setIsCreateProductModal}
+            />
       </div>
-      {search !== "" && data.length === 0 && (
+      {search && !data.length && (
         <div className="query-result">
           По запросу «{search}» товаров не найдено
         </div>
       )}
 
-      {search !== "" && data.length > 0 && (
+      {search  && !!data.length && (
         <div className="query-result">
           Результаты поиска товара по запросу «{search}»
         </div>
